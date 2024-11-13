@@ -1,0 +1,69 @@
+Write a program for pre-processing of a text document such as stop word removal, stemming
+
+Import necessary lib.
+
+import nltk
+from nltk.corpus import stopwords  
+from nltk.tokenize import word_tokenize  
+from nltk.stem import PorterStemmer
+Download necessary NLTK data
+
+nltk.download('stopwords')
+nltk.download('punkt')
+[nltk_data] Downloading package stopwords to
+[nltk_data]     C:\Users\Sanuja\AppData\Roaming\nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\Sanuja\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+True
+Def eg_sent
+
+example_sent="Deep learning models are typically more powerful than traditional machine learning techniques"
+stop_words = set(stopwords.words('english'))
+print(stop_words) 
+word_tokens = word_tokenize(example_sent)                
+{'can', 'having', 'will', 're', 'isn', 'm', 'and', 'me', 'itself', 'whom', 'ourselves', "mustn't", 'is', 'any', "couldn't", "you've", 'don', 'there', 'these', "don't", 'himself', 'my', 'aren', 'before', 'of', 'they', 'o', 'an', 'have', 'll', "weren't", 'had', 'didn', 'those', 'why', 'him', 'was', 'wouldn', 'about', 'hers', 'down', 'very', 'their', 'all', "shouldn't", 'above', "hasn't", 'then', 'when', 'over', 'few', 'such', 'while', 'into', 'nor', "you'd", 'but', "hadn't", 'as', 'further', 'being', 'again', 'wasn', 'both', 'in', 'here', 'doing', 'more', 'he', 'once', 'how', 't', 'we', 'on', 'not', 'his', "haven't", 'ours', 'through', 'own', 'be', 'this', 'just', 'now', 'doesn', 'shouldn', 'our', 'you', 'her', 's', 'if', 'your', 'does', 'until', 'couldn', 'for', 'off', 'did', 'weren', 'theirs', 'up', 'a', 'after', 'y', 'haven', 'that', "you'll", 'needn', 'out', 'at', 'during', 'between', 'themselves', 'are', 'yourself', 'only', 'than', "isn't", 'won', "you're", 'yourselves', 'what', 'hasn', 'should', "should've", 'because', 'herself', 'no', 'too', 'am', 'to', 'against', 'from', "that'll", 'has', 'she', 'it', 'mightn', 'some', 'i', 'which', 'each', "doesn't", 'ma', 'so', 'or', "mightn't", 'with', 'ain', 'mustn', 'shan', 'most', "it's", 'yours', 'under', 'where', "needn't", 'been', "aren't", 'hadn', 'myself', "wouldn't", "didn't", "shan't", 'who', 'same', 've', "wasn't", "she's", 'were', "won't", 'd', 'them', 'its', 'do', 'below', 'by', 'other', 'the'}
+stemmer= PorterStemmer()
+filtered_stemmed_sentence = [stemmer.stem(W.lower()) for W in word_tokens if W.lower() not in stop_words] 
+print("Original Word Tokens : " , word_tokens)
+print("Filtered and Stemmed Sentence: " , filtered_stemmed_sentence)
+Original Word Tokens :  ['Deep', 'learning', 'models', 'are', 'typically', 'more', 'powerful', 'than', 'traditional', 'machine', 'learning', 'techniques']
+Filtered and Stemmed Sentence:  ['deep', 'learn', 'model', 'typic', 'power', 'tradit', 'machin', 'learn', 'techniqu']
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+# Download necessary NLTK resources
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+# Initialize the lemmatizer
+lemmatizer = WordNetLemmatizer()
+
+# Sentence to process
+sentence = "Deep learning models are typically more powerful than traditional machine learning techniques."
+
+# Tokenize the sentence into words
+tokens = word_tokenize(sentence)
+
+# Filter out stopwords
+stop_words = set(stopwords.words('english'))
+filtered_stemmed_sentence = [lemmatizer.lemmatize(W.lower()) for W in word_tokens if W.lower() not in stop_words]
+
+# Display results
+print("Original Tokens:", tokens)
+print("Filtered and Stemmed Sentence: " , filtered_stemmed_sentence)
+Original Tokens: ['Deep', 'learning', 'models', 'are', 'typically', 'more', 'powerful', 'than', 'traditional', 'machine', 'learning', 'techniques', '.']
+Filtered and Stemmed Sentence:  ['deep', 'learning', 'model', 'typically', 'powerful', 'traditional', 'machine', 'learning', 'technique']
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\Sanuja\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     C:\Users\Sanuja\AppData\Roaming\nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     C:\Users\Sanuja\AppData\Roaming\nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
