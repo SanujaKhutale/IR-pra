@@ -98,10 +98,22 @@ def calculate_pagerank(graph, d=0.85, num_iterations=100):
             new_pagerank[node] = new_rank
         pagerank = new_pagerank
 ```
-- **Purpose**: This is the core part of the **PageRank calculation**. It performs the iteration process for a fixed number of times (`num_iterations`).
-  
-  - **Outer loop**: We repeat the ranking process for `num_iterations` iterations. Each iteration refines the PageRank values.
-  
+
+  Purpose: This is the core part of the PageRank calculation. It performs the iteration process for a fixed number of times (num_iterations).
+
+Outer loop: We repeat the ranking process for num_iterations iterations. Each iteration refines the PageRank values.
+
+Inner loop (for each node): For each node in the graph:
+
+Base rank: The formula (1 - d) / num_nodes represents the portion of the PageRank that comes from the random jump (the likelihood that the user jumps to a random page).
+Sum of inbound link contributions: For each other node in the graph, we check if it has a link to the current node (if node in graph[other_node]).
+If so, the PageRank value from that node is added to the current node's new rank. The formula used here is: new_rank+=d×(pagerank[other_node]/ len(graph[other_node])) This reflects that the importance of a page depends on the importance of the pages linking to it and the number of outbound links each linking page has.
+After accumulating all contributions, the new rank for the node is saved in the new_pagerank dictionary.
+Update pagerank: After processing all nodes, the pagerank dictionary is updated to reflect the new ranks for the next iteration.
+
+6. Returning the Result
+return pagerank
+Purpose: After completing all iterations, the final pagerank dictionary, which holds the PageRank of each node, is returned.
   - **Inner loop (for each node)**: For each node in the graph:
         print(f"Page: {node}, Rank: {rank:.4f}")
 Let's break down the key terms used in the PageRank algorithm and other related concepts.
