@@ -113,10 +113,30 @@ Update pagerank: After processing all nodes, the pagerank dictionary is updated 
 
 6. Returning the Result
 return pagerank
-Purpose: After completing all iterations, the final pagerank dictionary, which holds the PageRank of each node, is returned.
-  - **Inner loop (for each node)**: For each node in the graph:
-        print(f"Page: {node}, Rank: {rank:.4f}")
-Let's break down the key terms used in the PageRank algorithm and other related concepts.
+The code snippet you've provided contains a conditional statement commonly used in Python to control the execution of a program when it is run as a script. Let me break it down and explain each part in detail:
+
+### 1. **`if __name__ == "__main__":`**
+   - **`__name__`** is a special built-in variable in Python. It is automatically set to the name of the current module when the script is imported as a module, but it is set to **`"__main__"`** when the script is run directly.
+   - The condition **`if __name__ == "__main__":`** checks if the script is being run directly (as opposed to being imported as a module). This is useful for organizing code so that certain parts of the code only execute when the script is run as the main program, and not when it is imported into another script.
+
+   **Example of use:**
+   - If you have a script `pagerank.py` and you run it directly, the condition will be true, and the code inside the block will execute.
+   - If the script is imported into another script, the code inside this block will not execute, which allows you to reuse functions and classes without executing the main logic.
+
+### 2. **`pagerank_result = calculate_pagerank(graph)`**
+   - **`calculate_pagerank(graph)`** is presumably a function that computes the PageRank of a given graph. 
+   - The **`graph`** variable represents a directed graph (e.g., a network of web pages and their links), and the function returns a dictionary where each **`node`** (webpage) has an associated **PageRank score** (a measure of its importance in the graph).
+   - The **`pagerank_result`** stores the result returned by the **`calculate_pagerank`** function.
+
+### 3. **`for node, rank in pagerank_result.items():`**
+   - This is a **for loop** that iterates through each key-value pair in the **`pagerank_result`** dictionary.
+   - **`node`** represents a page or node in the graph, and **`rank`** represents its corresponding PageRank score.
+   - The **`pagerank_result.items()`** method returns an iterable of the dictionary’s key-value pairs, allowing the loop to process each node and its rank.
+
+### 4. **`print(f"Page: {node}, Rank: {rank:.4f}")`**
+   - This is a **formatted string** (f-string) that prints the **node (page)** and its **rank**.
+   - **`{rank:.4f}`** formats the **rank** to **4 decimal places**. The `.4f` format specifier ensures that the rank is printed as a floating-point number with four digits after the decimal point.
+   - For example, if the rank of a page is `0.2546789`, it will be printed as `0.2547`.
 
 1. Graph
 A graph is a mathematical structure used to model pairwise relationships between objects. It consists of:
